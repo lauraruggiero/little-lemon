@@ -26,7 +26,11 @@ export default function OnboardingScreen() {
 
     return (
         <View style={styles.container}>
-            <LittleLemonHeader />
+            <LittleLemonHeader 
+                showBack={false} 
+                showAvatar={true} 
+                initials={userInitials}
+            />
             <KeyboardAvoidingView
                 style={styles.keyboardView} // 3. Added flex: 1 to force it to the bottom
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>

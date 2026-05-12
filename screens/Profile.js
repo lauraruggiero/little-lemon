@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LittleLemonHeader from '../components/LittleLemonHeader';
 import Button from '../components/Button';
@@ -94,7 +95,6 @@ export default function ProfileScreen () {
         <View style={styles.container}>
             <LittleLemonHeader 
                 showBack={true} 
-                onBackPress={() => console.log('Back pressed')} 
                 showAvatar={true} 
                 initials={userInitials}
             />

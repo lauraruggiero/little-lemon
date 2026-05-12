@@ -1,16 +1,22 @@
 import React from 'react';
-import { View, StyleSheet, Image, Text, Pressable } from 'react-native';
+import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
-export default function LittleLemonHeader({ showBack, onBackPress, showAvatar, initials}) {
+export default function LittleLemonHeader({ showBack, onBackPress, showAvatar, initials, onAvatarPress }) {
+  const navigation = useNavigation();
+  
   return (
     <SafeAreaView edges={['top']} style={styles.safeArea}>
       <View style={styles.headerContainer}>
         <View style={styles.leftContainer}>
           {showBack && (
-            <Pressable style={styles.backButton} onPress={onBackPress}>
+            <TouchableOpacity 
+              onPress={() => navigation.goBack()}
+              style={styles.backButton} 
+            >
               <Text style={styles.backButtonText}>←</Text>
-            </Pressable>
+            </TouchableOpacity>
           )}
         </View>
         <Image 
@@ -20,9 +26,9 @@ export default function LittleLemonHeader({ showBack, onBackPress, showAvatar, i
         />
         <View style={styles.rightContainer}>
           {showAvatar && (
-            <View style={styles.headerAvatar}>
+            <TouchableOpacity onPress={onAvatarPress} style={styles.headerAvatar}>
               <Text style={styles.avatarInitials}>{initials}</Text>
-            </View>
+            </TouchableOpacity>
           )}
         </View>
       </View>
